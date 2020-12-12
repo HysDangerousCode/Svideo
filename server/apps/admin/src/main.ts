@@ -3,8 +3,9 @@ import { AdminModule } from './admin.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
-  const port = 3000;
   const app = await NestFactory.create(AdminModule);
+  // 后端跨域配置
+  app.enableCors();
   const options = new DocumentBuilder()
     .setTitle('Svideo后台管理API')
     .setDescription('供后台管理界面调用的服务端API')
@@ -12,7 +13,9 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api-docs', app, document);
+  const port = 3000;
   await app.listen(port);
-  console.log(`http://localhost:${port}/api-docs`);
+  console.log(`数据接口地址:http://localhost:${port}`);
+  console.log(`接口文档地址:http://localhost:${port}/api-docs`);
 }
 bootstrap();
