@@ -19,9 +19,11 @@
       </el-menu>
     </el-aside>
     <el-container>
-      <el-header height=""> Svideo后台管理界面 </el-header>
+      <el-header height="">
+        <h3>Svideo后台管理界面</h3>
+      </el-header>
       <el-main height="">
-        <router-view></router-view>
+        <router-view :key="$route.path"></router-view>
       </el-main>
       <el-footer height="">
         <!-- Footer content -->
