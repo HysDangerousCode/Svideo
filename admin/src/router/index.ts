@@ -16,20 +16,20 @@ const routes: RouteConfig[] = [
       },
       {
         path: '/courses/list',
-        name: 'CoursesList',
-        component: () => import('../views/courses/CourseList.vue')
+        name: 'CoursesCrud',
+        component: () => import('../views/courses/CourseCrud.vue')
       },
-      {
-        path: '/courses/edit/:id',
-        name: 'CoursesEdit',
-        props: true,
-        component: () => import('../views/courses/CourseEdit.vue')
-      },
-      {
-        path: '/courses/create',
-        name: 'CoursesCreate',
-        component: () => import('../views/courses/CourseEdit.vue')
-      },
+      // {
+      //   path: '/courses/edit/:id',
+      //   name: 'CoursesEdit',
+      //   props: true,
+      //   component: () => import('../views/courses/CourseEdit.vue')
+      // },
+      // {
+      //   path: '/courses/create',
+      //   name: 'CoursesCreate',
+      //   component: () => import('../views/courses/CourseEdit.vue')
+      // },
     ]
   },
 ]
