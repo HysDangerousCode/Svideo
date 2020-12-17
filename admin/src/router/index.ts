@@ -15,9 +15,10 @@ const routes: RouteConfig[] = [
         component: () => import('../views/Home.vue')
       },
       {
-        path: '/courses/list',
+        path: '/:resource/list',
         name: 'CoursesCrud',
-        component: () => import('../views/courses/CourseCrud.vue')
+        props: true,
+        component: () => import('../views/ResourceCrud.vue')
       },
       // {
       //   path: '/courses/edit/:id',
