@@ -36,16 +36,6 @@ export default class ResourceList extends Vue {
     const res = await this.$http.get(`${this.resource}/option`);
     this.option = res.data;
   }
-  async fetch() {
-    const res = await this.$http.get(`${this.resource}`, {
-      params: {
-        query: this.query,
-      },
-    });
-    this.data = res.data;
-    this.page.total = res.data.total;
-    // this.page.pageSize;
-  }
   async changePage({ pageSize, currentPage }) {
     this.query.page = currentPage;
     this.query.limit = pageSize;
@@ -68,9 +58,18 @@ export default class ResourceList extends Vue {
         where[k] = { $regex: where[k] };
       }
     }
-    where.name = { $regex: where.name };
     this.query.where = where;
     this.fetch();
+  }
+  async fetch() {
+    const res = await this.$http.get(`${this.resource}`, {
+      params: {
+        query: this.query,
+      },
+    });
+    this.data = res.data;
+    this.page.total = res.data.total;
+    // this.page.pageSize;
   }
   async create(row, done) {
     await this.$http.post(`${this.resource}`, row);
